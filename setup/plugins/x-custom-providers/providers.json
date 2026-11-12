@@ -1,0 +1,39 @@
+{
+  "providers": [
+    {
+      "id": "polzaai",
+      "name": "PolzaAI",
+      "baseUrl": "https://polza.ai/api/v1",
+      "npm": "@ai-sdk/openai-compatible",
+      "preset": "generic",
+      "enabled": false,
+      "modelPackages": {
+        "anthropic/": "@opencode/ai/providers/openrouter"
+      },
+      "priceCurrency": "RUB",
+      "priceRatePerUsd": 83.9153,
+      "authEnv": "POLZAAI_API_KEY"
+    },
+    {
+      "id": "routerai-ru",
+      "name": "RouterAI",
+      "baseUrl": "https://routerai.ru/api/v1",
+      "npm": "@ai-sdk/openai-compatible",
+      "preset": "generic",
+      "enabled": true,
+      "modelPackages": {
+        "anthropic/": "@opencode/ai/providers/openrouter",
+        "openai/": "@opencode/ai/providers/openrouter",
+        "google/": "@opencode/ai/providers/openrouter",
+        "z-ai/": "@opencode/ai/providers/openrouter",
+        "deepseek/": "@opencode/ai/providers/openrouter"
+      },
+      "modelsExcludePrefixes": [
+        "~"
+      ],
+      "priceCurrency": "RUB",
+      "priceRatePerUsd": 83.9153,
+      "authEnv": "ROUTERAI_RU_API_KEY"
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+.git
+.opencode
+.serena
+node_modules/
+/dist/
+/.dist/
+/PLAN.md
+/DONE.md
+__pycache__/
+*.py[cod]
+/vendor
+
+# Local OpenCode config and auth files.
+opencode.local.*
+opencode.json
+opencode.jsonc
+auth.json
+.netrc
+
+# Environment files; keep safe examples/templates trackable.
+.env
+.env.*
+!.env.example
+!.env.template
+
+# Credential and secret files.
+credentials.json
+credentials.yaml
+credentials.yml
+secrets.json
+secrets.yaml
+secrets.yml
+
+# Private keys and certificate bundles.
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+id_rsa
+id_dsa
+id_ecdsa
+id_ed25519
+
+# Database files and SQLite sidecars.
+*.db
+*.db-wal
+*.db-shm
+*.db-journal
+*.sqlite
+*.sqlite3
+*.sqlite-wal
+*.sqlite-shm
+*.sqlite-journal
+
+# Build output is never a source.
+/build/
+/dist/
+*.egg-info/
+/.venv/
+/.ruff_cache/
+
+# Local development queue and taskmd CLI config; not part of a release.
+/tasks/
+.taskmd.yaml

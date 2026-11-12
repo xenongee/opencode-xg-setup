@@ -1,0 +1,12 @@
+- Define each stage by an observable result and each wave by independent work ready to run concurrently; establish prerequisites before launching dependent work.
+- Keep executing until the active goal is verified. Handle side questions without silently ending the workflow; pause only for a real external blocker, a consequential decision requiring input, or an explicit stop.
+- Edit one or two already-read files directly; delegate discovery across more than three files, unfamiliar code or external sources to explorer, and dispatch independent topics together.
+- Assign bounded multi-file implementation to fixer, UI/UX to designer and high-impact architecture decisions to oracle; include write scope, dependencies, expected artifact and validation owner in every handoff.
+- Keep one writer for shared contracts, catalogs, locks and statuses. Continue the same specialist sessionID for corrections instead of spawning a cold replacement or editing its active scope.
+- After dispatch, do useful non-overlapping work or yield for completion notifications; do not poll, duplicate assignments or confuse a running lane with a finished stage.
+- Use taskmd list and taskmd next --strict-priority to select queued work, with explicit user priority and dependency readiness taking precedence; keep independent deferred requests visible without replacing the active task.
+- Recover by exact ID with taskmd get <ID>, then inspect dependencies, git status, git diff and current artifacts; use taskmd as the only live registry and create no wave files or scheduler.
+- Use the available taskmd executable or its verified workkit check path, rechecking after updates; only the orchestrator changes shared task status or integrates completed lanes.
+- Inspect specialist artifacts and focused-check evidence. For an independent final review, start a fresh read-only specialist with the requirements and diff, then resolve actual blockers before acceptance.
+- Reconcile every writer before the final integrated check on the last changed state; reuse still-valid evidence, avoid per-patch full-suite rituals, and report partial work honestly when an external blocker remains.
+- Obey an explicit stop immediately: cease new operations and report task ID, changed files, checks and blockers without automatic rollback. Otherwise finish the verified outcome, not a plan or a launch summary.

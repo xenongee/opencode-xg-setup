@@ -1,0 +1,2129 @@
+{
+  "packages": [
+    {
+      "id": "oh-my-opencode-slim",
+      "optional": false,
+      "purpose": "OpenCode orchestrator, agents and tools",
+      "repository": "https://github.com/alvinunreal/oh-my-opencode-slim",
+      "documentation": "https://github.com/alvinunreal/oh-my-opencode-slim/blob/v3.0.6/docs/opencode-v2-compatibility.md",
+      "version": "3.0.6; update channel: npm @latest",
+      "requirements": [
+        "Node.js and npm"
+      ],
+      "integration": {
+        "kind": "plugin",
+        "package": "oh-my-opencode-slim"
+      },
+      "install": {
+        "linux": {
+          "actions": [
+            {
+              "action": "npm",
+              "package": "oh-my-opencode-slim",
+              "version": "3.0.6"
+            }
+          ]
+        },
+        "windows": {
+          "actions": [
+            {
+              "action": "npm",
+              "package": "oh-my-opencode-slim",
+              "version": "3.0.6"
+            }
+          ]
+        }
+      },
+      "update": {
+        "linux": {
+          "actions": [
+            {
+              "action": "npm",
+              "package": "oh-my-opencode-slim",
+              "version": "latest"
+            }
+          ]
+        },
+        "windows": {
+          "actions": [
+            {
+              "action": "npm",
+              "package": "oh-my-opencode-slim",
+              "version": "latest"
+            }
+          ]
+        }
+      },
+      "verify": {
+        "linux": {
+          "actions": [
+            {
+              "action": "npm",
+              "package": "oh-my-opencode-slim",
+              "version": "latest"
+            }
+          ]
+        },
+        "windows": {
+          "actions": [
+            {
+              "action": "npm",
+              "package": "oh-my-opencode-slim",
+              "version": "latest"
+            }
+          ]
+        }
+      },
+      "type": "framework"
+    },
+    {
+      "id": "ponytail",
+      "optional": false,
+      "purpose": "Ponytail prompt injection, commands and skills",
+      "repository": "https://github.com/DietrichGebert/ponytail",
+      "documentation": "https://github.com/DietrichGebert/ponytail/blob/v5.3.3/INSTALL.md",
+      "version": "5.3.3; update channel: npm @latest",
+      "requirements": [
+        "Node.js and npm"
+      ],
+      "integration": {
+        "kind": "plugin",
+        "package": "@dietrichgebert/ponytail"
+      },
+      "install": {
+        "linux": {
+          "actions": [
+            {
+              "action": "npm",
+              "package": "@dietrichgebert/ponytail",
+              "version": "5.3.3"
+            }
+          ]
+        },
+        "windows": {
+          "actions": [
+            {
+              "action": "npm",
+              "package": "@dietrichgebert/ponytail",
+              "version": "5.3.3"
+            }
+          ]
+        }
+      },
+      "update": {
+        "linux": {
+          "actions": [
+            {
+              "action": "npm",
+              "package": "@dietrichgebert/ponytail",
+              "version": "latest"
+            }
+          ]
+        },
+        "windows": {
+          "actions": [
+            {
+              "action": "npm",
+              "package": "@dietrichgebert/ponytail",
+              "version": "latest"
+            }
+          ]
+        }
+      },
+      "verify": {
+        "linux": {
+          "actions": [
+            {
+              "action": "npm",
+              "package": "@dietrichgebert/ponytail",
+              "version": "latest"
+            }
+          ]
+        },
+        "windows": {
+          "actions": [
+            {
+              "action": "npm",
+              "package": "@dietrichgebert/ponytail",
+              "version": "latest"
+            }
+          ]
+        }
+      },
+      "type": "framework"
+    },
+    {
+      "id": "engram",
+      "optional": false,
+      "purpose": "Local persistent agent memory over MCP",
+      "repository": "https://github.com/Gentleman-Programming/engram",
+      "documentation": "https://github.com/Gentleman-Programming/engram/blob/v3.6.0/docs/AGENT-SETUP.md",
+      "version": "3.6.0; install: SHA-256 verified release pin; update: latest stable GitHub release with SHA-256",
+      "requirements": [
+        "uses Engram's native data directory unless ENGRAM_DATA_DIR is explicitly configured"
+      ],
+      "integration": {
+        "kind": "mcp",
+        "name": "engram",
+        "arguments": [
+          "mcp",
+          "--tools=agent"
+        ]
+      },
+      "install": {
+        "linux": {
+          "actions": [
+            {
+              "action": "release",
+              "assets": {
+                "x86_64": {
+                  "url": "https://github.com/Gentleman-Programming/engram/releases/download/v3.6.0/engram_3.6.0_linux_amd64.tar.gz",
+                  "sha256": "945fb471188826c251160947f8dda9fe148ba0dd095fa3453174fe7ab5c6479e",
+                  "binary": "engram"
+                },
+                "arm64": {
+                  "url": "https://github.com/Gentleman-Programming/engram/releases/download/v3.6.0/engram_3.6.0_linux_arm64.tar.gz",
+                  "sha256": "00a2d7645aa428e56c32c18b8de8bfa90d4c6e0f68c4d47bc82e3d6e3e77879d",
+                  "binary": "engram"
+                }
+              }
+            }
+          ]
+        },
+        "windows": {
+          "actions": [
+            {
+              "action": "release",
+              "assets": {
+                "arm64": {
+                  "url": "https://github.com/Gentleman-Programming/engram/releases/download/v3.6.0/engram_3.6.0_windows_arm64.zip",
+                  "sha256": "5a990f889bb1fb1b72bf1127216cc9f2f0bba7faa37c030a36329f8e8a51586d",
+                  "binary": "engram.exe"
+                },
+                "x86_64": {
+                  "url": "https://github.com/Gentleman-Programming/engram/releases/download/v3.6.0/engram_3.6.0_windows_amd64.zip",
+                  "sha256": "22650375af19d1e46ffe1f376314c12c20370dfd19045fbc649a95991706a102",
+                  "binary": "engram.exe"
+                }
+              }
+            }
+          ]
+        }
+      },
+      "update": {
+        "linux": {
+          "actions": [
+            {
+              "action": "release",
+              "repository": "Gentleman-Programming/engram",
+              "asset_pattern": "engram_{version}_linux_{architecture}.tar.gz",
+              "binary": "engram"
+            }
+          ]
+        },
+        "windows": {
+          "actions": [
+            {
+              "action": "release",
+              "repository": "Gentleman-Programming/engram",
+              "asset_pattern": "engram_{version}_windows_{architecture}.zip",
+              "binary": "engram.exe"
+            }
+          ]
+        }
+      },
+      "verify": {
+        "linux": {
+          "actions": [
+            {
+              "action": "release",
+              "assets": {
+                "x86_64": {
+                  "url": "https://github.com/Gentleman-Programming/engram/releases/download/v3.6.0/engram_3.6.0_linux_amd64.tar.gz",
+                  "sha256": "945fb471188826c251160947f8dda9fe148ba0dd095fa3453174fe7ab5c6479e",
+                  "binary": "engram"
+                },
+                "arm64": {
+                  "url": "https://github.com/Gentleman-Programming/engram/releases/download/v3.6.0/engram_3.6.0_linux_arm64.tar.gz",
+                  "sha256": "00a2d7645aa428e56c32c18b8de8bfa90d4c6e0f68c4d47bc82e3d6e3e77879d",
+                  "binary": "engram"
+                }
+              }
+            }
+          ]
+        },
+        "windows": {
+          "actions": [
+            {
+              "action": "release",
+              "assets": {
+                "arm64": {
+                  "url": "https://github.com/Gentleman-Programming/engram/releases/download/v3.6.0/engram_3.6.0_windows_arm64.zip",
+                  "sha256": "5a990f889bb1fb1b72bf1127216cc9f2f0bba7faa37c030a36329f8e8a51586d",
+                  "binary": "engram.exe"
+                },
+                "x86_64": {
+                  "url": "https://github.com/Gentleman-Programming/engram/releases/download/v3.6.0/engram_3.6.0_windows_amd64.zip",
+                  "sha256": "22650375af19d1e46ffe1f376314c12c20370dfd19045fbc649a95991706a102",
+                  "binary": "engram.exe"
+                }
+              }
+            }
+          ]
+        }
+      },
+      "type": "mcp"
+    },
+    {
+      "id": "codebase-memory-mcp",
+      "optional": false,
+      "purpose": "Local code graph and search MCP",
+      "repository": "https://github.com/DeusData/codebase-memory-mcp",
+      "documentation": "https://github.com/DeusData/codebase-memory-mcp/blob/v0.12.1/README.md",
+      "version": "0.12.1; install: SHA-256 verified release pin; update: latest stable GitHub release with SHA-256",
+      "requirements": [
+        "local graph data stays local"
+      ],
+      "integration": {
+        "kind": "mcp",
+        "name": "codebase_memory",
+        "arguments": []
+      },
+      "install": {
+        "linux": {
+          "actions": [
+            {
+              "action": "release",
+              "assets": {
+                "x86_64": {
+                  "url": "https://github.com/DeusData/codebase-memory-mcp/releases/download/v0.12.1/codebase-memory-mcp-linux-amd64.tar.gz",
+                  "sha256": "8453015145f072c1b9b019cbdd02cea8cc6f18cc5e116036dd20992631c638c7",
+                  "binary": "codebase-memory-mcp"
+                },
+                "arm64": {
+                  "url": "https://github.com/DeusData/codebase-memory-mcp/releases/download/v0.12.1/codebase-memory-mcp-linux-arm64.tar.gz",
+                  "sha256": "8575f126092660b93b170bdc2e06f3ef2dd28d3cc49ad6d0895dc3e4767219cd",
+                  "binary": "codebase-memory-mcp"
+                }
+              }
+            }
+          ]
+        },
+        "windows": {
+          "actions": [
+            {
+              "action": "release",
+              "assets": {
+                "arm64": {
+                  "url": "https://github.com/DeusData/codebase-memory-mcp/releases/download/v0.12.1/codebase-memory-mcp-windows-arm64.zip",
+                  "sha256": "934ab6bd67a76c6ebd9e110d87b7090ffd629919bedaeddabe5a19175038b063",
+                  "binary": "codebase-memory-mcp.exe"
+                },
+                "x86_64": {
+                  "url": "https://github.com/DeusData/codebase-memory-mcp/releases/download/v0.12.1/codebase-memory-mcp-windows-amd64.zip",
+                  "sha256": "4e4e0f16b45233af5c757a1fcbe3c3b16e9056375b1fbe2ce020b6de75dedcc0",
+                  "binary": "codebase-memory-mcp.exe"
+                }
+              }
+            }
+          ]
+        }
+      },
+      "update": {
+        "linux": {
+          "actions": [
+            {
+              "action": "release",
+              "repository": "DeusData/codebase-memory-mcp",
+              "asset_pattern": "codebase-memory-mcp-linux-{architecture}.tar.gz",
+              "binary": "codebase-memory-mcp"
+            }
+          ]
+        },
+        "windows": {
+          "actions": [
+            {
+              "action": "release",
+              "repository": "DeusData/codebase-memory-mcp",
+              "asset_pattern": "codebase-memory-mcp-windows-{architecture}.zip",
+              "binary": "codebase-memory-mcp.exe"
+            }
+          ]
+        }
+      },
+      "verify": {
+        "linux": {
+          "actions": [
+            {
+              "action": "release",
+              "assets": {
+                "x86_64": {
+                  "url": "https://github.com/DeusData/codebase-memory-mcp/releases/download/v0.12.1/codebase-memory-mcp-linux-amd64.tar.gz",
+                  "sha256": "8453015145f072c1b9b019cbdd02cea8cc6f18cc5e116036dd20992631c638c7",
+                  "binary": "codebase-memory-mcp"
+                },
+                "arm64": {
+                  "url": "https://github.com/DeusData/codebase-memory-mcp/releases/download/v0.12.1/codebase-memory-mcp-linux-arm64.tar.gz",
+                  "sha256": "8575f126092660b93b170bdc2e06f3ef2dd28d3cc49ad6d0895dc3e4767219cd",
+                  "binary": "codebase-memory-mcp"
+                }
+              }
+            }
+          ]
+        },
+        "windows": {
+          "actions": [
+            {
+              "action": "release",
+              "assets": {
+                "arm64": {
+                  "url": "https://github.com/DeusData/codebase-memory-mcp/releases/download/v0.12.1/codebase-memory-mcp-windows-arm64.zip",
+                  "sha256": "934ab6bd67a76c6ebd9e110d87b7090ffd629919bedaeddabe5a19175038b063",
+                  "binary": "codebase-memory-mcp.exe"
+                },
+                "x86_64": {
+                  "url": "https://github.com/DeusData/codebase-memory-mcp/releases/download/v0.12.1/codebase-memory-mcp-windows-amd64.zip",
+                  "sha256": "4e4e0f16b45233af5c757a1fcbe3c3b16e9056375b1fbe2ce020b6de75dedcc0",
+                  "binary": "codebase-memory-mcp.exe"
+                }
+              }
+            }
+          ]
+        }
+      },
+      "type": "mcp"
+    },
+    {
+      "id": "taskmd",
+      "optional": false,
+      "purpose": "Project-local task queue and optional web board",
+      "repository": "https://github.com/driangle/taskmd",
+      "documentation": "https://github.com/driangle/taskmd/blob/v0.8.0/README.md",
+      "version": "0.8.0; install: SHA-256 verified release pin; update: latest stable GitHub release with SHA-256",
+      "requirements": [],
+      "integration": {
+        "kind": "cli"
+      },
+      "install": {
+        "linux": {
+          "actions": [
+            {
+              "action": "release",
+              "assets": {
+                "x86_64": {
+                  "url": "https://github.com/driangle/taskmd/releases/download/v0.8.0/taskmd-v0.8.0-linux-amd64.tar.gz",
+                  "sha256": "d3a557277390acbbdd47fa3f0c5e3dbbc045058756395957fe156223f64c79ff",
+                  "binary": "taskmd-linux-amd64"
+                },
+                "arm64": {
+                  "url": "https://github.com/driangle/taskmd/releases/download/v0.8.0/taskmd-v0.8.0-linux-arm64.tar.gz",
+                  "sha256": "7df47d6edc6f3ea06c39e10d46ef25a4b4544d9b9bec75b8a7fa6170440a3edb",
+                  "binary": "taskmd-linux-arm64"
+                }
+              }
+            }
+          ]
+        },
+        "windows": {
+          "actions": [
+            {
+              "action": "release",
+              "assets": {
+                "arm64": {
+                  "url": "https://github.com/driangle/taskmd/releases/download/v0.8.0/taskmd-v0.8.0-windows-arm64.zip",
+                  "sha256": "3950bb1fa2b3f289ab2d8782f84e98da834d8e2a5ea7fb36275eacbbdb530bff",
+                  "binary": "taskmd.exe"
+                },
+                "x86_64": {
+                  "url": "https://github.com/driangle/taskmd/releases/download/v0.8.0/taskmd-v0.8.0-windows-amd64.zip",
+                  "sha256": "6939e58b3183d3a1fd18679ef82e38f93cedad0b71767f8525d9833e8d508823",
+                  "binary": "taskmd.exe"
+                }
+              }
+            }
+          ]
+        }
+      },
+      "update": {
+        "linux": {
+          "actions": [
+            {
+              "action": "release",
+              "repository": "driangle/taskmd",
+              "asset_pattern": "taskmd-{tag}-linux-{architecture}.tar.gz",
+              "binary": "taskmd-linux-{architecture}"
+            }
+          ]
+        },
+        "windows": {
+          "actions": [
+            {
+              "action": "release",
+              "repository": "driangle/taskmd",
+              "asset_pattern": "taskmd-{tag}-windows-{architecture}.zip",
+              "binary": "taskmd.exe"
+            }
+          ]
+        }
+      },
+      "verify": {
+        "linux": {
+          "actions": [
+            {
+              "action": "release",
+              "assets": {
+                "x86_64": {
+                  "url": "https://github.com/driangle/taskmd/releases/download/v0.8.0/taskmd-v0.8.0-linux-amd64.tar.gz",
+                  "sha256": "d3a557277390acbbdd47fa3f0c5e3dbbc045058756395957fe156223f64c79ff",
+                  "binary": "taskmd-linux-amd64"
+                },
+                "arm64": {
+                  "url": "https://github.com/driangle/taskmd/releases/download/v0.8.0/taskmd-v0.8.0-linux-arm64.tar.gz",
+                  "sha256": "7df47d6edc6f3ea06c39e10d46ef25a4b4544d9b9bec75b8a7fa6170440a3edb",
+                  "binary": "taskmd-linux-arm64"
+                }
+              }
+            }
+          ]
+        },
+        "windows": {
+          "actions": [
+            {
+              "action": "release",
+              "assets": {
+                "arm64": {
+                  "url": "https://github.com/driangle/taskmd/releases/download/v0.8.0/taskmd-v0.8.0-windows-arm64.zip",
+                  "sha256": "3950bb1fa2b3f289ab2d8782f84e98da834d8e2a5ea7fb36275eacbbdb530bff",
+                  "binary": "taskmd.exe"
+                },
+                "x86_64": {
+                  "url": "https://github.com/driangle/taskmd/releases/download/v0.8.0/taskmd-v0.8.0-windows-amd64.zip",
+                  "sha256": "6939e58b3183d3a1fd18679ef82e38f93cedad0b71767f8525d9833e8d508823",
+                  "binary": "taskmd.exe"
+                }
+              }
+            }
+          ]
+        }
+      },
+      "type": "cli"
+    },
+    {
+      "id": "x-4pda",
+      "purpose": "Repository-owned 4PDA forum MCP",
+      "repository": "local:setup/mcp/4pda.py",
+      "documentation": "local:setup/mcp/4pda.md",
+      "version": "bundled source; uv dependency cache refreshed on install/update",
+      "requirements": [
+        "uv",
+        "Python 3.12+",
+        "install/update require network to warm uv cache"
+      ],
+      "integration": {
+        "kind": "mcp",
+        "name": "x_forum_4pda",
+        "arguments": []
+      },
+      "install": {
+        "linux": {
+          "actions": [
+            {
+              "action": "own-mcp"
+            }
+          ]
+        },
+        "windows": {
+          "actions": [
+            {
+              "action": "own-mcp"
+            }
+          ]
+        }
+      },
+      "update": {
+        "linux": {
+          "actions": [
+            {
+              "action": "own-mcp"
+            }
+          ]
+        },
+        "windows": {
+          "actions": [
+            {
+              "action": "own-mcp"
+            }
+          ]
+        }
+      },
+      "verify": {
+        "linux": {
+          "actions": [
+            {
+              "action": "own-mcp"
+            }
+          ]
+        },
+        "windows": {
+          "actions": [
+            {
+              "action": "own-mcp"
+            }
+          ]
+        }
+      },
+      "optional": true,
+      "type": "mcp"
+    },
+    {
+      "id": "x-genius",
+      "purpose": "Repository-owned Genius lyrics and annotations MCP",
+      "repository": "local:setup/mcp/genius.py",
+      "documentation": "local:setup/mcp/genius.md",
+      "version": "bundled source; uv dependency cache refreshed on install/update",
+      "requirements": [
+        "uv",
+        "Python 3.12+",
+        "install/update require network to warm uv cache"
+      ],
+      "integration": {
+        "kind": "mcp",
+        "name": "x_genius",
+        "arguments": []
+      },
+      "install": {
+        "linux": {
+          "actions": [
+            {
+              "action": "own-mcp"
+            }
+          ]
+        },
+        "windows": {
+          "actions": [
+            {
+              "action": "own-mcp"
+            }
+          ]
+        }
+      },
+      "update": {
+        "linux": {
+          "actions": [
+            {
+              "action": "own-mcp"
+            }
+          ]
+        },
+        "windows": {
+          "actions": [
+            {
+              "action": "own-mcp"
+            }
+          ]
+        }
+      },
+      "verify": {
+        "linux": {
+          "actions": [
+            {
+              "action": "own-mcp"
+            }
+          ]
+        },
+        "windows": {
+          "actions": [
+            {
+              "action": "own-mcp"
+            }
+          ]
+        }
+      },
+      "optional": true,
+      "type": "mcp"
+    },
+    {
+      "id": "exa",
+      "purpose": "Optional hosted Exa search MCP",
+      "repository": "https://github.com/exa-labs/exa-mcp-server",
+      "documentation": "https://exa.ai/docs/get-started/exa-mcp",
+      "version": "provider-managed; no immutable version",
+      "requirements": [
+        "EXA_API_KEY",
+        "review remote disclosure, network access, and billing"
+      ],
+      "integration": {
+        "kind": "remote-mcp",
+        "name": "exa",
+        "url": "https://mcp.exa.ai/mcp?tools=web_search_exa,web_fetch_exa,web_search_advanced_exa",
+        "headers": {
+          "x-api-key": "{env:EXA_API_KEY}"
+        },
+        "oauth": false
+      },
+      "optional": true,
+      "type": "mcp"
+    },
+    {
+      "id": "tavily",
+      "purpose": "Optional hosted Tavily search MCP",
+      "repository": "https://github.com/tavily-ai/tavily-mcp",
+      "documentation": "https://docs.tavily.com/documentation/mcp",
+      "version": "provider-managed; no immutable version",
+      "requirements": [
+        "TAVILY_API_KEY",
+        "review remote disclosure, network access, and billing"
+      ],
+      "integration": {
+        "kind": "remote-mcp",
+        "name": "tavily",
+        "url": "https://mcp.tavily.com/mcp/",
+        "headers": {
+          "Authorization": "Bearer {env:TAVILY_API_KEY}"
+        },
+        "oauth": false
+      },
+      "optional": true,
+      "type": "mcp"
+    },
+    {
+      "id": "huggingface-remote",
+      "purpose": "Optional official hosted Hugging Face MCP",
+      "repository": "https://github.com/huggingface/hf-mcp-server",
+      "documentation": "https://github.com/huggingface/hf-mcp-server",
+      "version": "provider-managed; no immutable version",
+      "requirements": [
+        "HF_TOKEN",
+        "review token scope and hosted tool permissions"
+      ],
+      "integration": {
+        "kind": "remote-mcp",
+        "name": "huggingface_remote",
+        "url": "https://huggingface.co/mcp",
+        "headers": {
+          "Authorization": "Bearer {env:HF_TOKEN}"
+        },
+        "oauth": false
+      },
+      "optional": true,
+      "type": "mcp"
+    },
+    {
+      "id": "duckduckgo",
+      "purpose": "Optional local DuckDuckGo search MCP",
+      "repository": "https://github.com/nickclyde/duckduckgo-mcp-server",
+      "documentation": "https://github.com/nickclyde/duckduckgo-mcp-server",
+      "version": "PyPI latest via uv tool install/upgrade",
+      "requirements": [
+        "uv",
+        "review upstream URL protections and network access"
+      ],
+      "integration": {
+        "kind": "mcp",
+        "name": "duckduckgo",
+        "arguments": [
+          "--transport",
+          "stdio"
+        ]
+      },
+      "install": {
+        "linux": {
+          "actions": [
+            {
+              "action": "uv-tool"
+            }
+          ]
+        },
+        "windows": {
+          "actions": [
+            {
+              "action": "uv-tool"
+            }
+          ]
+        }
+      },
+      "update": {
+        "linux": {
+          "actions": [
+            {
+              "action": "uv-tool"
+            }
+          ]
+        },
+        "windows": {
+          "actions": [
+            {
+              "action": "uv-tool"
+            }
+          ]
+        }
+      },
+      "verify": {
+        "linux": {
+          "actions": [
+            {
+              "action": "uv-tool"
+            }
+          ]
+        },
+        "windows": {
+          "actions": [
+            {
+              "action": "uv-tool"
+            }
+          ]
+        }
+      },
+      "optional": true,
+      "type": "mcp"
+    },
+    {
+      "id": "semgrep",
+      "purpose": "Semgrep analysis MCP",
+      "repository": "https://github.com/semgrep/semgrep",
+      "documentation": "https://github.com/semgrep/semgrep/tree/develop/cli/src/semgrep/mcp",
+      "version": "PyPI latest via uv tool install/upgrade",
+      "requirements": [
+        "uv",
+        "review rule source and code disclosure"
+      ],
+      "integration": {
+        "kind": "mcp",
+        "name": "semgrep",
+        "arguments": [
+          "mcp",
+          "--transport",
+          "stdio"
+        ]
+      },
+      "install": {
+        "linux": {
+          "actions": [
+            {
+              "action": "uv-tool"
+            }
+          ]
+        },
+        "windows": {
+          "actions": [
+            {
+              "action": "uv-tool"
+            }
+          ]
+        }
+      },
+      "update": {
+        "linux": {
+          "actions": [
+            {
+              "action": "uv-tool"
+            }
+          ]
+        },
+        "windows": {
+          "actions": [
+            {
+              "action": "uv-tool"
+            }
+          ]
+        }
+      },
+      "verify": {
+        "linux": {
+          "actions": [
+            {
+              "action": "uv-tool"
+            }
+          ]
+        },
+        "windows": {
+          "actions": [
+            {
+              "action": "uv-tool"
+            }
+          ]
+        }
+      },
+      "optional": false,
+      "type": "mcp"
+    },
+    {
+      "id": "jscpd",
+      "purpose": "Optional jscpd CLI for duplicate-code analysis",
+      "repository": "https://github.com/kucherenko/jscpd",
+      "documentation": "https://github.com/kucherenko/jscpd",
+      "version": "5.4.2; update channel: npm @latest",
+      "requirements": [
+        "Node.js and npm"
+      ],
+      "integration": {
+        "kind": "cli"
+      },
+      "install": {
+        "linux": {
+          "actions": [
+            {
+              "action": "npm",
+              "package": "jscpd",
+              "version": "5.4.2"
+            }
+          ]
+        },
+        "windows": {
+          "actions": [
+            {
+              "action": "npm",
+              "package": "jscpd",
+              "version": "5.4.2"
+            }
+          ]
+        }
+      },
+      "update": {
+        "linux": {
+          "actions": [
+            {
+              "action": "npm",
+              "package": "jscpd",
+              "version": "latest"
+            }
+          ]
+        },
+        "windows": {
+          "actions": [
+            {
+              "action": "npm",
+              "package": "jscpd",
+              "version": "latest"
+            }
+          ]
+        }
+      },
+      "verify": {
+        "linux": {
+          "actions": [
+            {
+              "action": "npm",
+              "package": "jscpd",
+              "version": "latest"
+            }
+          ]
+        },
+        "windows": {
+          "actions": [
+            {
+              "action": "npm",
+              "package": "jscpd",
+              "version": "latest"
+            }
+          ]
+        }
+      },
+      "optional": true,
+      "type": "cli"
+    },
+    {
+      "id": "playwright-cli",
+      "purpose": "Playwright CLI and bundled skill; browser runtimes are not installed",
+      "repository": "https://github.com/microsoft/playwright-cli",
+      "documentation": "https://github.com/microsoft/playwright-cli",
+      "version": "latest; update channel: npm @latest",
+      "requirements": [
+        "Node.js and npm"
+      ],
+      "integration": {
+        "kind": "cli"
+      },
+      "install": {
+        "linux": {
+          "actions": [
+            {
+              "action": "npm",
+              "package": "@playwright/cli",
+              "version": "latest"
+            }
+          ]
+        },
+        "windows": {
+          "actions": [
+            {
+              "action": "npm",
+              "package": "@playwright/cli",
+              "version": "latest"
+            }
+          ]
+        }
+      },
+      "update": {
+        "linux": {
+          "actions": [
+            {
+              "action": "npm",
+              "package": "@playwright/cli",
+              "version": "latest"
+            }
+          ]
+        },
+        "windows": {
+          "actions": [
+            {
+              "action": "npm",
+              "package": "@playwright/cli",
+              "version": "latest"
+            }
+          ]
+        }
+      },
+      "verify": {
+        "linux": {
+          "actions": [
+            {
+              "action": "npm",
+              "package": "@playwright/cli",
+              "version": "latest"
+            }
+          ]
+        },
+        "windows": {
+          "actions": [
+            {
+              "action": "npm",
+              "package": "@playwright/cli",
+              "version": "latest"
+            }
+          ]
+        }
+      },
+      "optional": false,
+      "type": "cli",
+      "skill": {
+        "id": "x-playwright-cli",
+        "files": {
+          "SKILL.md": {
+            "source": "setup/skills/x-playwright-cli/SKILL.md"
+          }
+        }
+      }
+    },
+    {
+      "id": "grilling",
+      "type": "skill",
+      "purpose": "Original Matt Pocock grilling skill",
+      "repository": "https://github.com/mattpocock/skills",
+      "documentation": "https://github.com/mattpocock/skills",
+      "version": "main",
+      "requirements": [
+        "HTTPS access during install/update",
+        "License: MIT; included license file applies"
+      ],
+      "integration": {
+        "kind": "cli"
+      },
+      "install": {
+        "linux": {
+          "actions": [
+            {
+              "action": "skill"
+            }
+          ]
+        },
+        "windows": {
+          "actions": [
+            {
+              "action": "skill"
+            }
+          ]
+        }
+      },
+      "update": {
+        "linux": {
+          "actions": [
+            {
+              "action": "skill"
+            }
+          ]
+        },
+        "windows": {
+          "actions": [
+            {
+              "action": "skill"
+            }
+          ]
+        }
+      },
+      "verify": {
+        "linux": {
+          "actions": [
+            {
+              "action": "skill"
+            }
+          ]
+        },
+        "windows": {
+          "actions": [
+            {
+              "action": "skill"
+            }
+          ]
+        }
+      },
+      "optional": false,
+      "skill": {
+        "id": "grilling",
+        "files": {
+          "SKILL.md": {
+            "source": "https://raw.githubusercontent.com/mattpocock/skills/main/skills/productivity/grilling/SKILL.md"
+          },
+          "agents/openai.yaml": {
+            "source": "https://raw.githubusercontent.com/mattpocock/skills/main/skills/productivity/grilling/agents/openai.yaml"
+          },
+          "LICENSE": {
+            "source": "https://raw.githubusercontent.com/mattpocock/skills/main/LICENSE"
+          }
+        }
+      }
+    },
+    {
+      "id": "x-diagnosing-bugs",
+      "type": "skill",
+      "purpose": "Adapted Matt Pocock bug-diagnosis loop: reproduce, minimise, test hypotheses, regress",
+      "repository": "https://github.com/mattpocock/skills",
+      "documentation": "https://raw.githubusercontent.com/mattpocock/skills/4ae2317ddb22b046e26455e4f9c9b3aaaf62212d/skills/engineering/diagnosing-bugs/SKILL.md",
+      "version": "adapted from 4ae2317ddb22b046e26455e4f9c9b3aaaf62212d; bundled source",
+      "requirements": [],
+      "integration": {
+        "kind": "cli"
+      },
+      "install": {
+        "linux": {
+          "actions": [
+            {
+              "action": "skill"
+            }
+          ]
+        },
+        "windows": {
+          "actions": [
+            {
+              "action": "skill"
+            }
+          ]
+        }
+      },
+      "update": {
+        "linux": {
+          "actions": [
+            {
+              "action": "skill"
+            }
+          ]
+        },
+        "windows": {
+          "actions": [
+            {
+              "action": "skill"
+            }
+          ]
+        }
+      },
+      "verify": {
+        "linux": {
+          "actions": [
+            {
+              "action": "skill"
+            }
+          ]
+        },
+        "windows": {
+          "actions": [
+            {
+              "action": "skill"
+            }
+          ]
+        }
+      },
+      "optional": false,
+      "skill": {
+        "id": "x-diagnosing-bugs",
+        "files": {
+          "SKILL.md": {
+            "source": "setup/skills/x-diagnosing-bugs/SKILL.md"
+          },
+          "NOTICE.md": {
+            "source": "setup/skills/x-diagnosing-bugs/NOTICE.md"
+          },
+          "LICENSE": {
+            "source": "setup/skills/x-diagnosing-bugs/LICENSE"
+          }
+        }
+      }
+    },
+    {
+      "id": "x-writing-for-agents",
+      "type": "skill",
+      "purpose": "Adapted Matt Pocock guidance for short agent-facing skills, AGENTS.md and docs",
+      "repository": "https://github.com/mattpocock/skills",
+      "documentation": "https://raw.githubusercontent.com/mattpocock/skills/4ae2317ddb22b046e26455e4f9c9b3aaaf62212d/skills/productivity/writing-for-agents/SKILL.md",
+      "version": "adapted from 4ae2317ddb22b046e26455e4f9c9b3aaaf62212d; bundled source",
+      "requirements": [],
+      "integration": {
+        "kind": "cli"
+      },
+      "install": {
+        "linux": {
+          "actions": [
+            {
+              "action": "skill"
+            }
+          ]
+        },
+        "windows": {
+          "actions": [
+            {
+              "action": "skill"
+            }
+          ]
+        }
+      },
+      "update": {
+        "linux": {
+          "actions": [
+            {
+              "action": "skill"
+            }
+          ]
+        },
+        "windows": {
+          "actions": [
+            {
+              "action": "skill"
+            }
+          ]
+        }
+      },
+      "verify": {
+        "linux": {
+          "actions": [
+            {
+              "action": "skill"
+            }
+          ]
+        },
+        "windows": {
+          "actions": [
+            {
+              "action": "skill"
+            }
+          ]
+        }
+      },
+      "optional": false,
+      "skill": {
+        "id": "x-writing-for-agents",
+        "files": {
+          "SKILL.md": {
+            "source": "setup/skills/x-writing-for-agents/SKILL.md"
+          },
+          "SKILL-MECHANICS.md": {
+            "source": "setup/skills/x-writing-for-agents/SKILL-MECHANICS.md"
+          },
+          "NOTICE.md": {
+            "source": "setup/skills/x-writing-for-agents/NOTICE.md"
+          },
+          "LICENSE": {
+            "source": "setup/skills/x-writing-for-agents/LICENSE"
+          }
+        }
+      }
+    },
+    {
+      "id": "untangle-codebase",
+      "type": "skill",
+      "purpose": "Untangle a codebase incrementally",
+      "repository": "https://github.com/caldoai/skills",
+      "documentation": "https://github.com/caldoai/skills/tree/main/skills/untangle-codebase",
+      "version": "main",
+      "requirements": [
+        "HTTPS access during install/update",
+        "License: MIT; included license file applies"
+      ],
+      "optional": true,
+      "integration": {
+        "kind": "cli"
+      },
+      "skill": {
+        "id": "untangle-codebase",
+        "files": {
+          "SKILL.md": {
+            "source": "https://raw.githubusercontent.com/caldoai/skills/main/skills/untangle-codebase/SKILL.md"
+          },
+          "LICENSE": {
+            "source": "https://raw.githubusercontent.com/caldoai/skills/main/LICENSE"
+          }
+        }
+      },
+      "install": {
+        "linux": {
+          "actions": [
+            {
+              "action": "skill"
+            }
+          ]
+        },
+        "windows": {
+          "actions": [
+            {
+              "action": "skill"
+            }
+          ]
+        }
+      },
+      "update": {
+        "linux": {
+          "actions": [
+            {
+              "action": "skill"
+            }
+          ]
+        },
+        "windows": {
+          "actions": [
+            {
+              "action": "skill"
+            }
+          ]
+        }
+      },
+      "verify": {
+        "linux": {
+          "actions": [
+            {
+              "action": "skill"
+            }
+          ]
+        },
+        "windows": {
+          "actions": [
+            {
+              "action": "skill"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "x-custom-providers",
+      "type": "framework",
+      "purpose": "Managed custom provider plugin",
+      "repository": "https://github.com/xenongee/opencode-xg-setup",
+      "documentation": "https://github.com/xenongee/opencode-xg-setup/tree/main/setup/plugins/x-custom-providers",
+      "version": "bundled; install SDK @opencode/plugin 2.1.4; update SDK npm @latest",
+      "requirements": [
+        "Node >=22.18.0",
+        "npm"
+      ],
+      "optional": false,
+      "integration": {
+        "kind": "managed-plugin"
+      },
+      "install": {
+        "linux": {
+          "actions": [
+            {
+              "action": "managed-plugin"
+            }
+          ]
+        },
+        "windows": {
+          "actions": [
+            {
+              "action": "managed-plugin"
+            }
+          ]
+        }
+      },
+      "update": {
+        "linux": {
+          "actions": [
+            {
+              "action": "managed-plugin"
+            }
+          ]
+        },
+        "windows": {
+          "actions": [
+            {
+              "action": "managed-plugin"
+            }
+          ]
+        }
+      },
+      "verify": {
+        "linux": {
+          "actions": [
+            {
+              "action": "managed-plugin"
+            }
+          ]
+        },
+        "windows": {
+          "actions": [
+            {
+              "action": "managed-plugin"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "prototype",
+      "type": "skill",
+      "purpose": "Upstream prototype skill",
+      "repository": "https://github.com/mattpocock/skills",
+      "documentation": "https://github.com/mattpocock/skills",
+      "version": "main",
+      "requirements": [
+        "HTTPS access during install/update",
+        "License: MIT; included license file applies"
+      ],
+      "integration": {
+        "kind": "cli"
+      },
+      "optional": false,
+      "install": {
+        "linux": {
+          "actions": [
+            {
+              "action": "skill"
+            }
+          ]
+        },
+        "windows": {
+          "actions": [
+            {
+              "action": "skill"
+            }
+          ]
+        }
+      },
+      "update": {
+        "linux": {
+          "actions": [
+            {
+              "action": "skill"
+            }
+          ]
+        },
+        "windows": {
+          "actions": [
+            {
+              "action": "skill"
+            }
+          ]
+        }
+      },
+      "verify": {
+        "linux": {
+          "actions": [
+            {
+              "action": "skill"
+            }
+          ]
+        },
+        "windows": {
+          "actions": [
+            {
+              "action": "skill"
+            }
+          ]
+        }
+      },
+      "skill": {
+        "id": "prototype",
+        "files": {
+          "SKILL.md": {
+            "source": "https://raw.githubusercontent.com/mattpocock/skills/main/skills/engineering/prototype/SKILL.md"
+          },
+          "LOGIC.md": {
+            "source": "https://raw.githubusercontent.com/mattpocock/skills/main/skills/engineering/prototype/LOGIC.md"
+          },
+          "UI.md": {
+            "source": "https://raw.githubusercontent.com/mattpocock/skills/main/skills/engineering/prototype/UI.md"
+          },
+          "agents/openai.yaml": {
+            "source": "https://raw.githubusercontent.com/mattpocock/skills/main/skills/engineering/prototype/agents/openai.yaml"
+          },
+          "LICENSE": {
+            "source": "https://raw.githubusercontent.com/mattpocock/skills/main/LICENSE"
+          }
+        }
+      }
+    },
+    {
+      "id": "frontend-design",
+      "type": "skill",
+      "purpose": "Upstream frontend-design skill",
+      "repository": "https://github.com/anthropics/skills",
+      "documentation": "https://github.com/anthropics/skills",
+      "version": "main",
+      "requirements": [
+        "HTTPS access during install/update",
+        "License: Apache-2.0; included license file applies"
+      ],
+      "integration": {
+        "kind": "cli"
+      },
+      "optional": false,
+      "install": {
+        "linux": {
+          "actions": [
+            {
+              "action": "skill"
+            }
+          ]
+        },
+        "windows": {
+          "actions": [
+            {
+              "action": "skill"
+            }
+          ]
+        }
+      },
+      "update": {
+        "linux": {
+          "actions": [
+            {
+              "action": "skill"
+            }
+          ]
+        },
+        "windows": {
+          "actions": [
+            {
+              "action": "skill"
+            }
+          ]
+        }
+      },
+      "verify": {
+        "linux": {
+          "actions": [
+            {
+              "action": "skill"
+            }
+          ]
+        },
+        "windows": {
+          "actions": [
+            {
+              "action": "skill"
+            }
+          ]
+        }
+      },
+      "skill": {
+        "id": "frontend-design",
+        "files": {
+          "SKILL.md": {
+            "source": "https://raw.githubusercontent.com/anthropics/skills/main/skills/frontend-design/SKILL.md"
+          },
+          "LICENSE.txt": {
+            "source": "https://raw.githubusercontent.com/anthropics/skills/main/skills/frontend-design/LICENSE.txt"
+          }
+        }
+      }
+    },
+    {
+      "id": "mcp-builder",
+      "type": "skill",
+      "purpose": "Upstream mcp-builder skill",
+      "repository": "https://github.com/anthropics/skills",
+      "documentation": "https://github.com/anthropics/skills",
+      "version": "main",
+      "requirements": [
+        "HTTPS access during install/update",
+        "License: Apache-2.0; included license file applies"
+      ],
+      "integration": {
+        "kind": "cli"
+      },
+      "optional": false,
+      "install": {
+        "linux": {
+          "actions": [
+            {
+              "action": "skill"
+            }
+          ]
+        },
+        "windows": {
+          "actions": [
+            {
+              "action": "skill"
+            }
+          ]
+        }
+      },
+      "update": {
+        "linux": {
+          "actions": [
+            {
+              "action": "skill"
+            }
+          ]
+        },
+        "windows": {
+          "actions": [
+            {
+              "action": "skill"
+            }
+          ]
+        }
+      },
+      "verify": {
+        "linux": {
+          "actions": [
+            {
+              "action": "skill"
+            }
+          ]
+        },
+        "windows": {
+          "actions": [
+            {
+              "action": "skill"
+            }
+          ]
+        }
+      },
+      "skill": {
+        "id": "mcp-builder",
+        "files": {
+          "SKILL.md": {
+            "source": "https://raw.githubusercontent.com/anthropics/skills/main/skills/mcp-builder/SKILL.md"
+          },
+          "LICENSE.txt": {
+            "source": "https://raw.githubusercontent.com/anthropics/skills/main/skills/mcp-builder/LICENSE.txt"
+          },
+          "reference/evaluation.md": {
+            "source": "https://raw.githubusercontent.com/anthropics/skills/main/skills/mcp-builder/reference/evaluation.md"
+          },
+          "reference/mcp_best_practices.md": {
+            "source": "https://raw.githubusercontent.com/anthropics/skills/main/skills/mcp-builder/reference/mcp_best_practices.md"
+          },
+          "reference/node_mcp_server.md": {
+            "source": "https://raw.githubusercontent.com/anthropics/skills/main/skills/mcp-builder/reference/node_mcp_server.md"
+          },
+          "reference/node_mcp_server_v2.md": {
+            "source": "https://raw.githubusercontent.com/anthropics/skills/main/skills/mcp-builder/reference/node_mcp_server_v2.md"
+          },
+          "reference/python_mcp_server.md": {
+            "source": "https://raw.githubusercontent.com/anthropics/skills/main/skills/mcp-builder/reference/python_mcp_server.md"
+          },
+          "scripts/connections.py": {
+            "source": "https://raw.githubusercontent.com/anthropics/skills/main/skills/mcp-builder/scripts/connections.py"
+          },
+          "scripts/evaluation.py": {
+            "source": "https://raw.githubusercontent.com/anthropics/skills/main/skills/mcp-builder/scripts/evaluation.py"
+          },
+          "scripts/example_evaluation.xml": {
+            "source": "https://raw.githubusercontent.com/anthropics/skills/main/skills/mcp-builder/scripts/example_evaluation.xml"
+          },
+          "scripts/requirements.txt": {
+            "source": "https://raw.githubusercontent.com/anthropics/skills/main/skills/mcp-builder/scripts/requirements.txt"
+          }
+        }
+      }
+    },
+    {
+      "id": "security-threat-model",
+      "type": "skill",
+      "purpose": "Upstream security-threat-model skill",
+      "repository": "https://github.com/openai/skills",
+      "documentation": "https://github.com/openai/skills",
+      "version": "main",
+      "requirements": [
+        "HTTPS access during install/update",
+        "License: Apache-2.0; included license file applies"
+      ],
+      "integration": {
+        "kind": "cli"
+      },
+      "optional": false,
+      "install": {
+        "linux": {
+          "actions": [
+            {
+              "action": "skill"
+            }
+          ]
+        },
+        "windows": {
+          "actions": [
+            {
+              "action": "skill"
+            }
+          ]
+        }
+      },
+      "update": {
+        "linux": {
+          "actions": [
+            {
+              "action": "skill"
+            }
+          ]
+        },
+        "windows": {
+          "actions": [
+            {
+              "action": "skill"
+            }
+          ]
+        }
+      },
+      "verify": {
+        "linux": {
+          "actions": [
+            {
+              "action": "skill"
+            }
+          ]
+        },
+        "windows": {
+          "actions": [
+            {
+              "action": "skill"
+            }
+          ]
+        }
+      },
+      "skill": {
+        "id": "security-threat-model",
+        "files": {
+          "SKILL.md": {
+            "source": "https://raw.githubusercontent.com/openai/skills/main/skills/.curated/security-threat-model/SKILL.md"
+          },
+          "LICENSE.txt": {
+            "source": "https://raw.githubusercontent.com/openai/skills/main/skills/.curated/security-threat-model/LICENSE.txt"
+          },
+          "agents/openai.yaml": {
+            "source": "https://raw.githubusercontent.com/openai/skills/main/skills/.curated/security-threat-model/agents/openai.yaml"
+          },
+          "references/prompt-template.md": {
+            "source": "https://raw.githubusercontent.com/openai/skills/main/skills/.curated/security-threat-model/references/prompt-template.md"
+          },
+          "references/security-controls-and-assets.md": {
+            "source": "https://raw.githubusercontent.com/openai/skills/main/skills/.curated/security-threat-model/references/security-controls-and-assets.md"
+          }
+        }
+      }
+    },
+    {
+      "id": "security-best-practices",
+      "type": "skill",
+      "purpose": "Upstream security-best-practices skill",
+      "repository": "https://github.com/openai/skills",
+      "documentation": "https://github.com/openai/skills",
+      "version": "main",
+      "requirements": [
+        "HTTPS access during install/update",
+        "License: Apache-2.0; included license file applies"
+      ],
+      "integration": {
+        "kind": "cli"
+      },
+      "optional": false,
+      "install": {
+        "linux": {
+          "actions": [
+            {
+              "action": "skill"
+            }
+          ]
+        },
+        "windows": {
+          "actions": [
+            {
+              "action": "skill"
+            }
+          ]
+        }
+      },
+      "update": {
+        "linux": {
+          "actions": [
+            {
+              "action": "skill"
+            }
+          ]
+        },
+        "windows": {
+          "actions": [
+            {
+              "action": "skill"
+            }
+          ]
+        }
+      },
+      "verify": {
+        "linux": {
+          "actions": [
+            {
+              "action": "skill"
+            }
+          ]
+        },
+        "windows": {
+          "actions": [
+            {
+              "action": "skill"
+            }
+          ]
+        }
+      },
+      "skill": {
+        "id": "security-best-practices",
+        "files": {
+          "SKILL.md": {
+            "source": "https://raw.githubusercontent.com/openai/skills/main/skills/.curated/security-best-practices/SKILL.md"
+          },
+          "LICENSE.txt": {
+            "source": "https://raw.githubusercontent.com/openai/skills/main/skills/.curated/security-best-practices/LICENSE.txt"
+          },
+          "agents/openai.yaml": {
+            "source": "https://raw.githubusercontent.com/openai/skills/main/skills/.curated/security-best-practices/agents/openai.yaml"
+          },
+          "references/golang-general-backend-security.md": {
+            "source": "https://raw.githubusercontent.com/openai/skills/main/skills/.curated/security-best-practices/references/golang-general-backend-security.md"
+          },
+          "references/javascript-express-web-server-security.md": {
+            "source": "https://raw.githubusercontent.com/openai/skills/main/skills/.curated/security-best-practices/references/javascript-express-web-server-security.md"
+          },
+          "references/javascript-general-web-frontend-security.md": {
+            "source": "https://raw.githubusercontent.com/openai/skills/main/skills/.curated/security-best-practices/references/javascript-general-web-frontend-security.md"
+          },
+          "references/javascript-jquery-web-frontend-security.md": {
+            "source": "https://raw.githubusercontent.com/openai/skills/main/skills/.curated/security-best-practices/references/javascript-jquery-web-frontend-security.md"
+          },
+          "references/javascript-typescript-nextjs-web-server-security.md": {
+            "source": "https://raw.githubusercontent.com/openai/skills/main/skills/.curated/security-best-practices/references/javascript-typescript-nextjs-web-server-security.md"
+          },
+          "references/javascript-typescript-react-web-frontend-security.md": {
+            "source": "https://raw.githubusercontent.com/openai/skills/main/skills/.curated/security-best-practices/references/javascript-typescript-react-web-frontend-security.md"
+          },
+          "references/javascript-typescript-vue-web-frontend-security.md": {
+            "source": "https://raw.githubusercontent.com/openai/skills/main/skills/.curated/security-best-practices/references/javascript-typescript-vue-web-frontend-security.md"
+          },
+          "references/python-django-web-server-security.md": {
+            "source": "https://raw.githubusercontent.com/openai/skills/main/skills/.curated/security-best-practices/references/python-django-web-server-security.md"
+          },
+          "references/python-fastapi-web-server-security.md": {
+            "source": "https://raw.githubusercontent.com/openai/skills/main/skills/.curated/security-best-practices/references/python-fastapi-web-server-security.md"
+          },
+          "references/python-flask-web-server-security.md": {
+            "source": "https://raw.githubusercontent.com/openai/skills/main/skills/.curated/security-best-practices/references/python-flask-web-server-security.md"
+          }
+        }
+      }
+    },
+    {
+      "id": "egm-drift-report",
+      "type": "skill",
+      "purpose": "Upstream egm-drift-report skill",
+      "repository": "https://github.com/google/elephant-goldfish-model",
+      "documentation": "https://github.com/google/elephant-goldfish-model",
+      "version": "main",
+      "requirements": [
+        "HTTPS access during install/update",
+        "License: Apache-2.0; included license file applies"
+      ],
+      "integration": {
+        "kind": "cli"
+      },
+      "optional": false,
+      "install": {
+        "linux": {
+          "actions": [
+            {
+              "action": "skill"
+            }
+          ]
+        },
+        "windows": {
+          "actions": [
+            {
+              "action": "skill"
+            }
+          ]
+        }
+      },
+      "update": {
+        "linux": {
+          "actions": [
+            {
+              "action": "skill"
+            }
+          ]
+        },
+        "windows": {
+          "actions": [
+            {
+              "action": "skill"
+            }
+          ]
+        }
+      },
+      "verify": {
+        "linux": {
+          "actions": [
+            {
+              "action": "skill"
+            }
+          ]
+        },
+        "windows": {
+          "actions": [
+            {
+              "action": "skill"
+            }
+          ]
+        }
+      },
+      "skill": {
+        "id": "egm-drift-report",
+        "files": {
+          "SKILL.md": {
+            "source": "https://raw.githubusercontent.com/google/elephant-goldfish-model/main/skills/egm-drift-report/SKILL.md"
+          },
+          "agents/openai.yaml": {
+            "source": "https://raw.githubusercontent.com/google/elephant-goldfish-model/main/skills/egm-drift-report/agents/openai.yaml"
+          },
+          "LICENSE": {
+            "source": "https://raw.githubusercontent.com/google/elephant-goldfish-model/main/LICENSE"
+          }
+        }
+      }
+    },
+    {
+      "id": "x-bro",
+      "type": "skill",
+      "purpose": "Repository-owned bro workflow skill",
+      "repository": "https://github.com/xenongee/opencode-xg-setup",
+      "documentation": "https://github.com/xenongee/opencode-xg-setup",
+      "version": "bundled source",
+      "requirements": [],
+      "integration": {
+        "kind": "cli"
+      },
+      "optional": false,
+      "skill": {
+        "id": "x-bro",
+        "files": {
+          "SKILL.md": {
+            "source": "setup/skills/x-bro/SKILL.md"
+          },
+          "NOTICE.md": {
+            "source": "setup/skills/x-bro/NOTICE.md"
+          }
+        }
+      },
+      "install": {
+        "linux": {
+          "actions": [
+            {
+              "action": "skill"
+            }
+          ]
+        },
+        "windows": {
+          "actions": [
+            {
+              "action": "skill"
+            }
+          ]
+        }
+      },
+      "update": {
+        "linux": {
+          "actions": [
+            {
+              "action": "skill"
+            }
+          ]
+        },
+        "windows": {
+          "actions": [
+            {
+              "action": "skill"
+            }
+          ]
+        }
+      },
+      "verify": {
+        "linux": {
+          "actions": [
+            {
+              "action": "skill"
+            }
+          ]
+        },
+        "windows": {
+          "actions": [
+            {
+              "action": "skill"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "markitdown-mcp",
+      "type": "mcp",
+      "purpose": "Microsoft MarkItDown document conversion MCP",
+      "repository": "https://github.com/microsoft/markitdown",
+      "documentation": "https://github.com/microsoft/markitdown",
+      "version": "PyPI latest (0.0.1a8; prerelease) via uv tool install/upgrade",
+      "requirements": [
+        "uv",
+        "License: MIT (Microsoft)"
+      ],
+      "integration": {
+        "kind": "mcp",
+        "name": "markitdown",
+        "arguments": []
+      },
+      "optional": false,
+      "install": {
+        "linux": {
+          "actions": [
+            {
+              "action": "uv-tool"
+            }
+          ]
+        },
+        "windows": {
+          "actions": [
+            {
+              "action": "uv-tool"
+            }
+          ]
+        }
+      },
+      "update": {
+        "linux": {
+          "actions": [
+            {
+              "action": "uv-tool"
+            }
+          ]
+        },
+        "windows": {
+          "actions": [
+            {
+              "action": "uv-tool"
+            }
+          ]
+        }
+      },
+      "verify": {
+        "linux": {
+          "actions": [
+            {
+              "action": "uv-tool"
+            }
+          ]
+        },
+        "windows": {
+          "actions": [
+            {
+              "action": "uv-tool"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "rea",
+      "type": "mcp",
+      "purpose": "Optional REA reverse-engineering CLI and MCP",
+      "repository": "https://github.com/morluto/rea",
+      "documentation": "https://github.com/morluto/rea",
+      "version": "npm rea-agents @latest",
+      "requirements": [
+        "Node ^22.23.4 || ^24.22.1 || >=26.12.1",
+        "npm",
+        "License: MIT"
+      ],
+      "integration": {
+        "kind": "mcp",
+        "name": "rea",
+        "arguments": [
+          "mcp"
+        ]
+      },
+      "optional": true,
+      "install": {
+        "linux": {
+          "actions": [
+            {
+              "action": "npm",
+              "package": "rea-agents",
+              "version": "latest"
+            }
+          ]
+        },
+        "windows": {
+          "actions": [
+            {
+              "action": "npm",
+              "package": "rea-agents",
+              "version": "latest"
+            }
+          ]
+        }
+      },
+      "update": {
+        "linux": {
+          "actions": [
+            {
+              "action": "npm",
+              "package": "rea-agents",
+              "version": "latest"
+            }
+          ]
+        },
+        "windows": {
+          "actions": [
+            {
+              "action": "npm",
+              "package": "rea-agents",
+              "version": "latest"
+            }
+          ]
+        }
+      },
+      "verify": {
+        "linux": {
+          "actions": [
+            {
+              "action": "npm",
+              "package": "rea-agents",
+              "version": "latest"
+            }
+          ]
+        },
+        "windows": {
+          "actions": [
+            {
+              "action": "npm",
+              "package": "rea-agents",
+              "version": "latest"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
