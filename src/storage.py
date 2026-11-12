@@ -206,7 +206,7 @@ class _WindowsAPI:
                     continue
                 if kind == 1:  # A deny ACE cannot grant foreign access.
                     continue
-                if kind != 0 or sid_text(ace.value + 8) not in {user, "S-1-5-18", "S-1-5-32-544"}:
+                if kind != 0 or sid_text(ace.value + 8) not in {user, "S-1-5-18", "S-1-5-32-544", "S-1-3-4"}:
                     raise ManagedFileError("Windows ACL grants access outside user/SYSTEM/Administrators")
             control, revision = ctypes.c_ushort(), w.DWORD()
             if not self.a.GetSecurityDescriptorControl(descriptor, ctypes.byref(control), ctypes.byref(revision)):

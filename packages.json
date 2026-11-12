@@ -432,12 +432,12 @@
                 "arm64": {
                   "url": "https://github.com/driangle/taskmd/releases/download/v0.8.0/taskmd-v0.8.0-windows-arm64.zip",
                   "sha256": "3950bb1fa2b3f289ab2d8782f84e98da834d8e2a5ea7fb36275eacbbdb530bff",
-                  "binary": "taskmd.exe"
+                  "binary": "taskmd-windows-arm64.exe"
                 },
                 "x86_64": {
                   "url": "https://github.com/driangle/taskmd/releases/download/v0.8.0/taskmd-v0.8.0-windows-amd64.zip",
                   "sha256": "6939e58b3183d3a1fd18679ef82e38f93cedad0b71767f8525d9833e8d508823",
-                  "binary": "taskmd.exe"
+                  "binary": "taskmd-windows-amd64.exe"
                 }
               }
             }
@@ -461,7 +461,7 @@
               "action": "release",
               "repository": "driangle/taskmd",
               "asset_pattern": "taskmd-{tag}-windows-{architecture}.zip",
-              "binary": "taskmd.exe"
+              "binary": "taskmd-windows-{architecture}.exe"
             }
           ]
         }
@@ -494,12 +494,12 @@
                 "arm64": {
                   "url": "https://github.com/driangle/taskmd/releases/download/v0.8.0/taskmd-v0.8.0-windows-arm64.zip",
                   "sha256": "3950bb1fa2b3f289ab2d8782f84e98da834d8e2a5ea7fb36275eacbbdb530bff",
-                  "binary": "taskmd.exe"
+                  "binary": "taskmd-windows-arm64.exe"
                 },
                 "x86_64": {
                   "url": "https://github.com/driangle/taskmd/releases/download/v0.8.0/taskmd-v0.8.0-windows-amd64.zip",
                   "sha256": "6939e58b3183d3a1fd18679ef82e38f93cedad0b71767f8525d9833e8d508823",
-                  "binary": "taskmd.exe"
+                  "binary": "taskmd-windows-amd64.exe"
                 }
               }
             }
