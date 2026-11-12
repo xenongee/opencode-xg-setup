@@ -70,6 +70,7 @@ class CoreTests(unittest.TestCase):
             with self.assertRaises(ManagedFileError):
                 apply_file(root, path.name, b"replacement", receipt)
 
+    @unittest.skipUnless(os.name == "posix", "symlink testing requires POSIX environment")
     def test_symlink_files_and_parents_are_rejected(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
@@ -110,7 +111,7 @@ class CoreTests(unittest.TestCase):
         packages = load_catalog(ROOT / "packages.json")
         self.assertEqual({package["id"] for package in packages if not package["optional"]}, BASE)
         # Release checks compare this required-file contract with the actual wheel.
-        manifest = {"packages.json"} | {str(path.relative_to(ROOT))
+        manifest = {"packages.json"} | {path.relative_to(ROOT).as_posix()
                                       for path in (ROOT / "setup").rglob("*") if path.is_file()}
         self.assertTrue(set(_DATA_FILES) <= manifest)
         action = {"action": "release", "repository": "Gentleman-Programming/engram",
@@ -168,15 +169,15 @@ class CoreTests(unittest.TestCase):
             skill = source / "setup/skills/fixture/SKILL.md"
             skill.parent.mkdir(parents=True)
             skill.write_text("Fixture skill.")
+            target = detect_platform()
             packages = [package for package in load_catalog(ROOT / "packages.json")
                         if package["id"] in {"ponytail", "taskmd", "grilling"}]
             for package in packages:
                 package.update(optional=package["id"] == "grilling", integration={"kind": "cli"},
                                skill={"id": package["id"], "files": {"SKILL.md": {"source": "setup/skills/fixture/SKILL.md"}}})
                 for operation in ("install", "update", "verify"):
-                    package[operation] = {"linux": {"actions": [{"action": "skill"}]}}
+                    package[operation] = {target.platform: {"actions": [{"action": "skill"}]}}
             (source / "packages.json").write_text(json.dumps({"packages": packages}))
-            target = detect_platform()
             for ids in (["grilling"], []):
                 status, report = install_components(ids, config, data, target, source_root=source)
                 self.assertEqual(status, 0, report)
@@ -188,6 +189,7 @@ class CoreTests(unittest.TestCase):
             self.assertEqual(selection.read_text(), "[]")
             self.assertEqual(before, {path: path.read_bytes() for path in before})
 
+    @unittest.skipUnless(os.name == "posix", "profile and /bin/sh shell imports require POSIX environment")
     def test_environment_formats_literal_roundtrip_and_idempotency(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
@@ -215,6 +217,7 @@ class CoreTests(unittest.TestCase):
             self.assertFalse(import_environment(source, home=root, backend=backend)["changed"])
             self.assertEqual(snapshot, {path: (path.read_bytes(), path.stat().st_mtime_ns) for path in snapshot})
 
+    @unittest.skipUnless(os.name == "posix", "POSIX file permission bit tests and backend paths")
     def test_environment_discovery_and_unsafe_preflight_never_leak(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
@@ -244,6 +247,36 @@ class CoreTests(unittest.TestCase):
             (root / ".env").chmod(0o644)
             with self.assertRaises(EnvironmentError):
                 discover_env_file(cwd=root, checkout=ROOT)
+
+    def test_environment_parse_and_leak_prevention(self):
+        from environment import _parse, _upsert
+        values = _parse(b'ROUNDTRIP="synthetic value"\n')
+        updated = _upsert(b"OTHER=keep\n", values, "shell")
+        self.assertEqual(_upsert(updated, values, "shell"), updated)
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            source = root / "input.env"
+            source.write_text('TOKEN="synthetic-secret\n')
+            with self.assertRaises(EnvironmentError) as error:
+                import_environment(source, home=root, backend=None)
+            self.assertNotIn("synthetic-secret", str(error.exception))
+            self.assertFalse((root / ".config").exists())
+
+    def test_windows_acl_allows_owner_rights_sid_and_rejects_foreign_sid(self):
+        if os.name != "nt":
+            self.skipTest("Windows ACL test requires native NT")
+        from storage import validate_windows_directory, ManagedFileError
+        with tempfile.TemporaryDirectory() as directory:
+            test_dir = Path(directory) / "owner_rights_dir"
+            # Python on Windows creates dirs with mode=0o700 using S-1-3-4 (OWNER RIGHTS)
+            test_dir.mkdir(mode=0o700)
+            validate_windows_directory(test_dir)
+            import subprocess
+            subprocess.run(["icacls", str(test_dir), "/grant", "*S-1-1-0:(OI)(CI)R"],
+                           check=True, capture_output=True)
+            with self.assertRaises(ManagedFileError):
+                validate_windows_directory(test_dir)
+
 
 
 if __name__ == "__main__":
