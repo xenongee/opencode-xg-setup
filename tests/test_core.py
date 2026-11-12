@@ -257,6 +257,7 @@ class CoreTests(unittest.TestCase):
             root = Path(directory)
             source = root / "input.env"
             source.write_text('TOKEN="synthetic-secret\n')
+            source.chmod(0o600)
             with self.assertRaises(EnvironmentError) as error:
                 import_environment(source, home=root, backend=None)
             self.assertNotIn("synthetic-secret", str(error.exception))
