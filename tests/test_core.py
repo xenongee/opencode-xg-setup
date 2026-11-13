@@ -263,22 +263,32 @@ class CoreTests(unittest.TestCase):
             self.assertNotIn("synthetic-secret", str(error.exception))
             self.assertFalse((root / ".config").exists())
 
-    def test_env_discovery_falls_back_to_installed_checkout(self):
-        from paths import is_checkout
+    def test_env_discovery_uses_installer_metadata_and_survives_denial(self):
+        from types import SimpleNamespace
+        import paths
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
-            checkout, elsewhere = root / "checkout", root / "elsewhere"
+            checkout, elsewhere, missing = root / "checkout", root / "elsewhere", root / "gone"
             (checkout / "src").mkdir(parents=True)
             elsewhere.mkdir()
             (checkout / "src/workkit.py").write_text("")
             (checkout / "packages.json").write_text("{}")
-            self.assertTrue(is_checkout(checkout))
-            self.assertFalse(is_checkout(elsewhere))
-            self.assertIsNone(discover_env_file(cwd=elsewhere, checkout=checkout))
-            private = checkout / ".env"
-            private.write_text("TOKEN=synthetic-value\n")
-            private.chmod(0o600)
-            self.assertEqual(discover_env_file(cwd=elsewhere, checkout=checkout), private)
+
+            def metadata(path):
+                return SimpleNamespace(read_text=lambda _: json.dumps({"url": path.as_uri()}))
+
+            with patch.object(paths.importlib.metadata, "distribution", return_value=metadata(checkout)):
+                self.assertEqual(paths.checkout_root(), checkout)
+                self.assertIsNone(discover_env_file(cwd=elsewhere, checkout=paths.checkout_root()))
+                private = checkout / ".env"
+                private.write_text("TOKEN=synthetic-value\n")
+                private.chmod(0o600)
+                self.assertEqual(discover_env_file(cwd=elsewhere, checkout=paths.checkout_root()), private)
+                with patch.object(paths, "is_checkout", side_effect=PermissionError):
+                    self.assertIsNone(paths.checkout_root())
+
+            with patch.object(paths.importlib.metadata, "distribution", return_value=metadata(missing)):
+                self.assertIsNone(paths.checkout_root())
 
     def test_windows_acl_allows_owner_rights_sid_and_rejects_foreign_sid(self):
         if os.name != "nt":

@@ -52,9 +52,11 @@ def main(argv: list[str] | None = None) -> int:
     env_file = None
     if args.command in ("install", "sync") and not args.dry_run:
         try:
-            checkout = source_root()
-            if not is_checkout(checkout):
-                checkout = checkout_root()
+            checkout = None
+            if args.env_file is None:
+                checkout = source_root()
+                if not is_checkout(checkout):
+                    checkout = checkout_root()
             env_file = discover_env_file(args.env_file, checkout=checkout)
         except EnvironmentError:
             print(f"{args.command}: blocked: unsafe or inaccessible environment source")

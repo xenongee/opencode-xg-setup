@@ -103,13 +103,16 @@ def checkout_root() -> Path | None:
         if urlparse(url).scheme != "file":
             return None
         path = Path(url2pathname(urlparse(url).path)).expanduser()
-    except (importlib.metadata.PackageNotFoundError, KeyError, TypeError, ValueError, OSError):
+        return path if path.is_absolute() and is_checkout(path) else None
+    except (importlib.metadata.PackageNotFoundError, KeyError, TypeError, ValueError, OSError, RuntimeError):
         return None
-    return path if path.is_absolute() and is_checkout(path) else None
 
 
 def is_checkout(path) -> bool:
-    return (Path(path) / "src/workkit.py").is_file() and (Path(path) / "packages.json").is_file()
+    try:
+        return (Path(path) / "src/workkit.py").is_file() and (Path(path) / "packages.json").is_file()
+    except OSError:
+        return False
 
 
 def _config_dir() -> Path:
