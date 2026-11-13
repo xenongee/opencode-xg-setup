@@ -5,7 +5,7 @@ import argparse
 from check import check
 from environment import EnvironmentError, discover_env_file
 from install import install_components
-from paths import _config_dir, _data_root, detect_platform, source_root
+from paths import _config_dir, _data_root, checkout_root, detect_platform, is_checkout, source_root
 from sync import sync_plugins
 
 
@@ -52,7 +52,10 @@ def main(argv: list[str] | None = None) -> int:
     env_file = None
     if args.command in ("install", "sync") and not args.dry_run:
         try:
-            env_file = discover_env_file(args.env_file, checkout=source_root())
+            checkout = source_root()
+            if not is_checkout(checkout):
+                checkout = checkout_root()
+            env_file = discover_env_file(args.env_file, checkout=checkout)
         except EnvironmentError:
             print(f"{args.command}: blocked: unsafe or inaccessible environment source")
             return 2

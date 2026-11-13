@@ -263,6 +263,23 @@ class CoreTests(unittest.TestCase):
             self.assertNotIn("synthetic-secret", str(error.exception))
             self.assertFalse((root / ".config").exists())
 
+    def test_env_discovery_falls_back_to_installed_checkout(self):
+        from paths import is_checkout
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            checkout, elsewhere = root / "checkout", root / "elsewhere"
+            (checkout / "src").mkdir(parents=True)
+            elsewhere.mkdir()
+            (checkout / "src/workkit.py").write_text("")
+            (checkout / "packages.json").write_text("{}")
+            self.assertTrue(is_checkout(checkout))
+            self.assertFalse(is_checkout(elsewhere))
+            self.assertIsNone(discover_env_file(cwd=elsewhere, checkout=checkout))
+            private = checkout / ".env"
+            private.write_text("TOKEN=synthetic-value\n")
+            private.chmod(0o600)
+            self.assertEqual(discover_env_file(cwd=elsewhere, checkout=checkout), private)
+
     def test_windows_acl_allows_owner_rights_sid_and_rejects_foreign_sid(self):
         if os.name != "nt":
             self.skipTest("Windows ACL test requires native NT")

@@ -5,12 +5,16 @@ source discovery prefers installed package data; validation covers user-owned
 configuration and private Workkit data directories."""
 
 import hashlib
+import importlib.metadata
+import json
 import os
 import platform
 import stat
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Literal
+from urllib.parse import urlparse
+from urllib.request import url2pathname
 
 PlatformName = Literal["linux", "wsl", "windows"]
 Architecture = Literal["x86_64", "arm64"]
@@ -89,6 +93,23 @@ def source_root() -> Path:
     if _has_workkit_data(checkout):
         return checkout
     return packaged
+
+
+def checkout_root() -> Path | None:
+    """Source checkout recorded by the installer, so `.env` is found from any directory."""
+    try:
+        raw = importlib.metadata.distribution("opencode-workkit").read_text("direct_url.json")
+        url = json.loads(raw)["url"]
+        if urlparse(url).scheme != "file":
+            return None
+        path = Path(url2pathname(urlparse(url).path)).expanduser()
+    except (importlib.metadata.PackageNotFoundError, KeyError, TypeError, ValueError, OSError):
+        return None
+    return path if path.is_absolute() and is_checkout(path) else None
+
+
+def is_checkout(path) -> bool:
+    return (Path(path) / "src/workkit.py").is_file() and (Path(path) / "packages.json").is_file()
 
 
 def _config_dir() -> Path:
