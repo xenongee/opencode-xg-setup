@@ -54,24 +54,22 @@ def _source(path):
 
 
 def discover_env_file(explicit=None, *, cwd=None, checkout=None):
-    """Choose one source, never merge or fall back past an unsafe candidate."""
+    """Choose one source: explicit --env-file or the verified Workkit checkout .env."""
     try:
         if explicit is not None:
             path = _absolute(Path(cwd or Path.cwd()) / Path(explicit).expanduser())
             _source(path)
             return path
-        candidates = [_absolute(Path(cwd or Path.cwd()) / ".env")]
         if checkout is not None:
             root = _absolute(checkout)
             if (root / "src/workkit.py").is_file() and (root / "packages.json").is_file():
-                candidates.append(root / ".env")
-        for path in candidates:
-            try:
-                path.lstat()
-            except FileNotFoundError:
-                continue
-            _source(path)
-            return path
+                path = root / ".env"
+                try:
+                    path.lstat()
+                except FileNotFoundError:
+                    return None
+                _source(path)
+                return path
         return None
     except (OSError, TypeError, ValueError, RuntimeError):
         raise EnvironmentError("unsafe or inaccessible environment source") from None

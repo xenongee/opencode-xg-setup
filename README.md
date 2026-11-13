@@ -49,11 +49,12 @@ workkit install --config-dir "$HOME/.config/opencode-test" --data-root "$HOME/.l
 
 ## Environment variables
 
-Real `install` and `sync` import one private `.env`: `--env-file` takes precedence,
-then the current directory, then an identifiable source checkout. A copy installed
-with `uv tool install <path>` records that path (PEP 610 `direct_url.json`), so the
-checkout `.env` is still found when the command runs from any other directory.
-Missing automatic files are skipped. Preview, update and check do not import secrets.
+Real `install` and `sync` import one private `.env`: `--env-file` takes precedence;
+otherwise only the `.env` from an identified Workkit source checkout is used. Arbitrary
+current working directories are ignored to prevent accidental credential loading. A copy
+installed with `uv tool install <path>` records that path (PEP 610 `direct_url.json`), so
+the checkout `.env` is found regardless of where the command runs. Missing automatic files
+are skipped. Preview, update and check do not import secrets.
 [.env.example](.env.example) lists supported credential names; use a private file,
 not a committed copy. Empty values are skipped; values are never printed.
 

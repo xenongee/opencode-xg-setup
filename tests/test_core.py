@@ -243,10 +243,14 @@ class CoreTests(unittest.TestCase):
             with self.assertRaises(EnvironmentError):
                 import_environment(source, home=root, backend=None)
             self.assertFalse((root / ".config/opencode/workkit.env").exists())
-            (root / ".env").write_text("TOKEN=synthetic-secret\n")
-            (root / ".env").chmod(0o644)
+            bad_checkout = root / "bad_checkout"
+            (bad_checkout / "src").mkdir(parents=True)
+            (bad_checkout / "src/workkit.py").write_text("")
+            (bad_checkout / "packages.json").write_text("{}")
+            (bad_checkout / ".env").write_text("TOKEN=synthetic-secret\n")
+            (bad_checkout / ".env").chmod(0o644)
             with self.assertRaises(EnvironmentError):
-                discover_env_file(cwd=root, checkout=ROOT)
+                discover_env_file(cwd=root, checkout=bad_checkout)
 
     def test_environment_parse_and_leak_prevention(self):
         from environment import _parse, _upsert
@@ -262,6 +266,22 @@ class CoreTests(unittest.TestCase):
                 import_environment(source, home=root, backend=None)
             self.assertNotIn("synthetic-secret", str(error.exception))
             self.assertFalse((root / ".config").exists())
+
+    def test_env_discovery_ignores_foreign_cwd_and_selects_workkit_checkout(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            checkout, foreign = root / "checkout", root / "foreign_cwd"
+            (checkout / "src").mkdir(parents=True)
+            foreign.mkdir()
+            (checkout / "src/workkit.py").write_text("")
+            (checkout / "packages.json").write_text("{}")
+            (foreign / ".env").write_text("FOREIGN=1\n")
+            (foreign / ".env").chmod(0o600)
+            self.assertIsNone(discover_env_file(cwd=foreign, checkout=checkout))
+            workkit_env = checkout / ".env"
+            workkit_env.write_text("WORKKIT=1\n")
+            workkit_env.chmod(0o600)
+            self.assertEqual(discover_env_file(cwd=foreign, checkout=checkout), workkit_env)
 
     def test_env_discovery_uses_installer_metadata_and_survives_denial(self):
         from types import SimpleNamespace
