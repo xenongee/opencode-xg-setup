@@ -13,7 +13,7 @@ from contextlib import contextmanager
 from pathlib import Path
 
 from storage import (
-    _existing, _open_lock_file, _parent, _same_file, _temporary, writer_lock,
+    _existing, _nt_directory, _open_lock_file, _parent, _same_file, _temporary, writer_lock,
 )
 
 _KEY = re.compile(r"[A-Za-z_][A-Za-z0-9_]*\Z")
@@ -209,12 +209,15 @@ def _directory(path, home, *, create=False):
 @contextmanager
 def _shared_lock(home):
     directory = home / ".config/opencode"
-    _directory(directory, home, create=True)
     path = directory / ".workkit-environment.lock"
     if os.name == "nt":
+        # Require an existing profile, but apply the private ACL check to the lock directory.
+        with _nt_directory(home):
+            _directory(directory, home, create=True)
         with writer_lock(directory, path):
             yield
         return
+    _directory(directory, home, create=True)
     import fcntl
     with _parent(path) as (fd, name):
         lock = _open_lock_file(fd, name)
@@ -309,7 +312,7 @@ def import_environment(path, *, home=None, backend=_BACKEND):
         values = _parse(_source(_absolute(path)))
         if not values:
             return {"names": (), "changed": (), "skipped": ()}
-        if not _directory(home, home):
+        if os.name != "nt" and not _directory(home, home):
             raise EnvironmentError("environment home is missing")
         with _shared_lock(home):
             if os.name == "nt":
