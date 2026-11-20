@@ -310,6 +310,46 @@ class CoreTests(unittest.TestCase):
             with patch.object(paths.importlib.metadata, "distribution", return_value=metadata(missing)):
                 self.assertIsNone(paths.checkout_root())
 
+    @unittest.skipUnless(os.name == "nt", "Windows import requires native NT")
+    def test_windows_environment_import_requires_private_lock_directory_not_home(self):
+        from storage import validate_windows_directory
+
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            source = root / ".env"
+            source.write_text("TOKEN=synthetic-value\n")
+            home = root / "profile"
+            home.mkdir(mode=0o700)
+            lock_dir = home / ".config/opencode"
+            lock_dir.mkdir(mode=0o700, parents=True)
+
+            # Widen only this temporary directory's ACL, not its descendants'.
+            def grant_read(path):
+                subprocess.run(["icacls", str(path), "/grant", "*S-1-1-0:R"],
+                               check=True, capture_output=True)
+
+            grant_read(home)
+            with self.assertRaisesRegex(ManagedFileError, "Windows ACL grants access outside"):
+                validate_windows_directory(home)
+
+            with patch("environment._windows", return_value=("HKCU Environment",)) as write:
+                report = import_environment(source, home=home, backend=None)
+                write.assert_called_once_with({"TOKEN": "synthetic-value"})
+                self.assertEqual(report["changed"], ("HKCU Environment",))
+                self.assertEqual((lock_dir / ".workkit-environment.lock").read_bytes(), b"\0")
+
+                write.reset_mock()
+                grant_read(lock_dir)
+                with self.assertRaises(EnvironmentError):
+                    import_environment(source, home=home, backend=None)
+                write.assert_not_called()
+
+                missing_home = root / "missing"
+                with self.assertRaises(EnvironmentError):
+                    import_environment(source, home=missing_home, backend=None)
+                self.assertFalse(missing_home.exists())
+                write.assert_not_called()
+
     def test_windows_acl_allows_owner_rights_sid_and_rejects_foreign_sid(self):
         if os.name != "nt":
             self.skipTest("Windows ACL test requires native NT")
